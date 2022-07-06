@@ -425,7 +425,7 @@
         <tr>
             <th>Line Item ID</th>
             <th>Order ID</th>
-            <th>Product ID</th>
+            <th>Parent Product ID</th>
             <th>Name</th>
             <th>Cost</th>
             <th>Price</th>
@@ -437,10 +437,10 @@
             <tr>
                 <td>{{ $item->line_item_id }}</td>
                 <td>{{ $item->order_id }}</td>
-                <td>{{ $item->product_id }}</td>
+                <td>{{ $item->parent_product_id }}</td>
                 <td>{{ $decode->name }}</td>
                 <td>{{ $item->cost }}</td>
-                <td>{{ $decode->price }}</td>
+                <td>{{ $item->price }}</td>
             </tr>
         @endforeach
     </table>
