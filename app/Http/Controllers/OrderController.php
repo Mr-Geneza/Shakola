@@ -28,7 +28,6 @@ class OrderController extends Controller
 				$new_data[] = $item;
 			}
 		}
-		dd($new_data);
 		return view('orders', compact('new_data'));
 	}
 
