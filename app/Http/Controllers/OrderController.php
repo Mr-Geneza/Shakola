@@ -18,8 +18,8 @@ class OrderController extends Controller
 		$data = Order::join('products', 'products.id', 'orders.product_id')
 			->where('orders.price', '>', 0)
 			->where('orders.cost', '>', 0)
-			->orderBy('line_item_id', 'desc')
 			->groupBy('orders.parent_product_id', 'orders.price')
+			->orderBy('orders.line_item_id', 'asc')
 			->get();
 
 		foreach ($data as $item) {
