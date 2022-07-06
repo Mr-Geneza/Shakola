@@ -14,18 +14,21 @@ class OrderController extends Controller
 	 */
 	public function index()
 	{
+
 		$data = Order::join('products', 'products.id', 'orders.product_id')
 			->where('orders.price', '>', 0)
 			->where('orders.cost', '>', 0)
 			->orderBy('line_item_id', 'desc')
+			->groupBy('orders.parent_product_id', 'orders.price')
 			->get();
 
 		foreach ($data as $item) {
 			$decode = json_decode($item->payload);
-			if ($decode->status === 'publish' && stristr($decode->name, 'sandals')){
+			if ($decode->status === 'publish' && stristr($decode->name, 'sandals')) {
 				$new_data[] = $item;
 			}
 		}
+		dd($new_data);
 		return view('orders', compact('new_data'));
 	}
 
